@@ -13,4 +13,12 @@ spec:
     path: ch07/bgd
     targetRevision: main
   syncPolicy:
-    automated: {}
+    # automated: {}
+    
+    # Para observar modificações no repositório e reaplicar em
+    # caso de mudanças
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true # Cria o namespace de destino
