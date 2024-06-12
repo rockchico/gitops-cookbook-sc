@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bgdh-app
+  namespace: argo
+spec:
+  destination:
+    namespace: bgdh
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: ch07/bgdh
+    repoURL: https://github.com/rockchico/gitops-cookbook-sc.git
+    targetRevision: main
+    helm:
+      parameters:
+        - name: replicaCount
+          value: "3"
+  syncPolicy:
+    automated: {}
